@@ -1,11 +1,48 @@
 # Makefile de chevres
-# créer à l'aide du tuto : https://gl.developpez.com/tutoriel/outil/makefile/
+# à faire :
+#	- qu'il se démerde pour trouver toutes les sources dans le répertoire et sous-repertoire src
 
-hello : gui.o  main.o
-	g++ -o main gui.o main.o
+CC = g++
+CXXFLAGS = -W -Wall -ansi -pedantic
+# Les différents FrameWorks et bibliothèques pour le linkage
+# GLLIBS = -ltiff -framework OPENGL -framework GLUT -framework GLUI -lobjc -lstdc++ -lm
+LDFLAGS =
+SRCDIR = src
+HEADDIR = src
+OBJDIR = obj
+BINDIR = bin
+EXEC = chevres
 
-gui.o : src/Interface/gui.cpp
-	g++ -o gui.o -c src/Interface/gui.cpp -W -Wall
+SRC  = $(wildcard $(SRCDIR)/*.cpp)
+SRC += $(wildcard $(SRCDIR)/Interface/*.cpp)
+OBJ  = $(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
-main.o : src/main.cpp
-	g++ -o main.o -c src/main.cpp -W -Wall
+default : all
+
+# all : liste les executables à produire
+all : $(EXEC)
+
+# Cible de construction de l'exécutable
+$(EXEC): $(OBJ)
+	@ [ -d $(BINDIR) ] || mkdir $(BINDIR)
+	@ $(CC) -o $(BINDIR)/$@ $^ $(LDFLAGS)
+	@ [ -h $@ ] || ln -s $(BINDIR)/$@ $@
+
+# Déclaration de a règle générique
+# Si tous vos fichiers c/cpp n'ont pas de .h correspondant,
+# vous pouvez enlever $(SRCDIR)/%.h des dépendances.
+$(OBJDIR)/%.o: $(SRCDIR)/%.c $(SRCDIR)/%.h
+	@ [ -d $(OBJDIR) ] || mkdir $(OBJDIR)
+	@ $(CC) -o $@ -c $< $(CFLAGS)
+
+# commandes
+
+# Nettoyage du répertoire des objets
+clean:
+	@ echo rm -f $(OBJDIR)/*.o
+	@ rm -f $(OBJDIR)/*.o
+
+# Suppression des répertoires des objets et des binaires
+mrproper: clean
+	@ echo rm -rf $(EXEC) $(OBJDIR) $(BINDIR)
+	@ rm -rf $(EXEC) $(OBJDIR) $(BINDIR)
