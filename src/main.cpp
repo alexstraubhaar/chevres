@@ -1,10 +1,6 @@
-
-
 #include <iostream>
 
-
 #include "Interface/gui.h"
-
 
 int main(){
 
