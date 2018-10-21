@@ -3,9 +3,9 @@
 #	- qu'il se démerde pour trouver toutes les sources dans le répertoire et sous-repertoire src
 
 CC = g++
-CXXFLAGS = -W -Wall -ansi -pedantic
+CXXFLAGS = -W -Wall -ansi -pedantic -static
 # Les différents FrameWorks et bibliothèques pour le linkage
-# GLLIBS = -ltiff -framework OPENGL -framework GLUT -framework GLUI -lobjc -lstdc++ -lm
+GLLIBS = -lsfml-graphics -lsfml-window -lsfml-system
 LDFLAGS =
 SRCDIR = src
 HEADDIR = src
@@ -25,7 +25,7 @@ all : $(EXEC)
 # Cible de construction de l'exécutable
 $(EXEC): $(OBJ)
 	@ [ -d $(BINDIR) ] || mkdir $(BINDIR)
-	@ $(CC) -o $(BINDIR)/$@ $^ $(LDFLAGS)
+	@ $(CC) -o $(BINDIR)/$@ $^ $(LDFLAGS) $(GLLIBS)
 	@ [ -h $@ ] || ln -s $(BINDIR)/$@ $@
 
 # Déclaration de a règle générique
@@ -33,7 +33,7 @@ $(EXEC): $(OBJ)
 # vous pouvez enlever $(SRCDIR)/%.h des dépendances.
 $(OBJDIR)/%.o: $(SRCDIR)/%.c $(SRCDIR)/%.h
 	@ [ -d $(OBJDIR) ] || mkdir $(OBJDIR)
-	@ $(CC) -o $@ -c $< $(CFLAGS)
+	@ $(CC) -o $@ -c $< $(CXXFLAGS) $(GLLIBS)
 
 # commandes
 
