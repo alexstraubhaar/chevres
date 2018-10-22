@@ -1,9 +1,9 @@
 # Makefile de chevres
 # à faire :
-#	- qu'il se démerde pour trouver toutes les sources dans le répertoire et sous-repertoire src
+#	- qu'il se démerde pour trouver toutes les sources dans le répertoire et sous-repertoires src
 
 CC = g++
-CXXFLAGS = -W -Wall -ansi -pedantic -static
+CXXFLAGS = -W -Wall -ansi -pedantic #-static
 # Les différents FrameWorks et bibliothèques pour le linkage
 GLLIBS = -lsfml-graphics -lsfml-window -lsfml-system
 LDFLAGS =
@@ -31,7 +31,7 @@ $(EXEC): $(OBJ)
 # Déclaration de a règle générique
 # Si tous vos fichiers c/cpp n'ont pas de .h correspondant,
 # vous pouvez enlever $(SRCDIR)/%.h des dépendances.
-$(OBJDIR)/%.o: $(SRCDIR)/%.c $(SRCDIR)/%.h
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp $(SRCDIR)/%.h
 	@ [ -d $(OBJDIR) ] || mkdir $(OBJDIR)
 	@ $(CC) -o $@ -c $< $(CXXFLAGS) $(GLLIBS)
 
@@ -43,6 +43,6 @@ clean:
 	@ rm -f $(OBJDIR)/*.o
 
 # Suppression des répertoires des objets et des binaires
-mrproper: clean
+Clean: clean
 	@ echo rm -rf $(EXEC) $(OBJDIR) $(BINDIR)
 	@ rm -rf $(EXEC) $(OBJDIR) $(BINDIR)

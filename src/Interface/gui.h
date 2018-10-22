@@ -20,7 +20,7 @@ public:
 
 private:
     // Méthodes privées
-    void gestionDeEvenements();
+    void gestionDesEvenements();
     void dessine();
 
     // Membres privés
