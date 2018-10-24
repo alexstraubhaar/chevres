@@ -11,11 +11,10 @@ class ADessiner : public sf::Drawable, public sf::Transformable
 public:
     // constructeurs/destructeurs
     ADessiner();
-    //~ADessiner();
 
-private:
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
+private:
     std::vector<sf::CircleShape> nourritures;
 
 };

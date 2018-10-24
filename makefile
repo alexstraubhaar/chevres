@@ -16,6 +16,7 @@ EXEC = chevres
 SRC  = $(wildcard $(SRCDIR)/*.cpp)
 SRC += $(wildcard $(SRCDIR)/Interface/*.cpp)
 SRC += $(wildcard $(SRCDIR)/Simulation/*.cpp)
+SRC += $(wildcard $(SRCDIR)/outils/*.cpp)
 OBJ  = $(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
 default : all

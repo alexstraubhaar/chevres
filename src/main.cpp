@@ -20,21 +20,19 @@ int main()
 
     etat etatProgramme = ARRET;
     Gui gui;
+    ADessiner adessiner;
 
     std::cout << "Hello world !\n"; /*!< juste pour un code minimum, pour tester le makefile */
     hello();
 
     while(etatProgramme != QUITTE){
 
-        if(!gui.tour())
+        if(!gui.tour(adessiner))
         {
             etatProgramme = QUITTE;
         }
 
     }
-
-    ADessiner adessiner; // il faudra qu'un classe Simulation générale hérite de Adessiner...
-
 
     return 0;
 }
