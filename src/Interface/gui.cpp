@@ -3,9 +3,9 @@
 #include "gui.h"
 
 //Constantes à changer en parametres...
-const int tailleFenetreX = 1000;
-const int tailleFenetreY = 1000;
-const sf::Color fondDecran = sf::Color(5,27,1);
+int tailleFenetreX = 1000;
+int tailleFenetreY = 1000;
+sf::Color fondDecran = sf::Color(5,27,1);
 
 void hello(){
     std::cout << "test du makefile depuis le fichier inclu...\n";

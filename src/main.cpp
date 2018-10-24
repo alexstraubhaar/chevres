@@ -1,6 +1,9 @@
 #include <iostream>
 
+//#include <SFML/Graphics.hpp>
+
 #include "Interface/gui.h"
+#include "Simulation/adessiner.h"
 
 enum etat
 {
@@ -29,6 +32,9 @@ int main()
         }
 
     }
+
+    ADessiner adessiner; // il faudra qu'un classe Simulation générale hérite de Adessiner...
+
 
     return 0;
 }
