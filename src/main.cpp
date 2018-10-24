@@ -27,6 +27,7 @@ int main()
 
     while(etatProgramme != QUITTE){
 
+        adessiner.petitTour();
         if(!gui.tour(adessiner))
         {
             etatProgramme = QUITTE;

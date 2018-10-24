@@ -5,7 +5,7 @@
 //Constantes à changer en parametres...
 int tailleFenetreX = 1000;
 int tailleFenetreY = 1000;
-sf::Color fondDecran = sf::Color(5,27,1);
+sf::Color fondDecran = sf::Color(5,27,1); //très joli vert
 
 void hello()
 {

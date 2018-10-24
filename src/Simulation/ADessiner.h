@@ -13,9 +13,11 @@ public:
     ADessiner();
 
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+    void petitTour();
 
 private:
     std::vector<sf::CircleShape> nourritures;
+    std::vector<sf::Vector2f> vitesses;
 
 };
 
