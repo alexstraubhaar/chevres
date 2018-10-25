@@ -1,6 +1,9 @@
 #include <iostream>
 
+//#include <SFML/Graphics.hpp>
+
 #include "Interface/gui.h"
+#include "Simulation/adessiner.h"
 
 enum etat
 {
@@ -14,13 +17,15 @@ int main()
 {
     etat etatProgramme = ARRET;
     Gui gui;
+    ADessiner adessiner;
 
     std::cout << "Hello world !\n"; /*!< juste pour un code minimum, pour tester le makefile */
     hello();
 
     while(etatProgramme != QUITTE){
 
-        if(!gui.tour())
+        adessiner.petitTour();
+        if(!gui.tour(adessiner))
         {
             etatProgramme = QUITTE;
         }

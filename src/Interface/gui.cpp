@@ -3,11 +3,12 @@
 #include "gui.h"
 
 //Constantes à changer en parametres...
-const int tailleFenetreX = 1000;
-const int tailleFenetreY = 1000;
-const sf::Color fondDecran = sf::Color(5,27,1);
+int tailleFenetreX = 1000;
+int tailleFenetreY = 1000;
+sf::Color fondDecran = sf::Color(5,27,1); //très joli vert
 
-void hello(){
+void hello()
+{
     std::cout << "test du makefile depuis le fichier inclu...\n";
 }
 
@@ -16,15 +17,10 @@ Gui::Gui()
     fenetrePrincipale.create(sf::VideoMode(tailleFenetreX, tailleFenetreY), L"Chêêêêêêêvres");
 }
 
-Gui::~Gui()
-{
-
-}
-
-bool Gui::tour()
+bool Gui::tour(sf::Drawable& adessiner)
 {
     gestionDesEvenements();
-    dessine();
+    dessine(adessiner);
     return fenetrePrincipale.isOpen();
 }
 
@@ -40,8 +36,9 @@ void Gui::gestionDesEvenements()
     }
 }
 
-void Gui::dessine()
+void Gui::dessine(sf::Drawable& adessiner)
 {
     fenetrePrincipale.clear(fondDecran);
+    fenetrePrincipale.draw(adessiner);
     fenetrePrincipale.display();
 }

@@ -3,7 +3,7 @@
 #	- qu'il se démerde pour trouver toutes les sources dans le répertoire et sous-repertoires src
 
 CC = g++
-CXXFLAGS = -W -Wall -ansi -pedantic #-static
+CXXFLAGS = -W -Wall -ansi -pedantic -std=c++11 #-static
 # Les différents FrameWorks et bibliothèques pour le linkage
 GLLIBS = -lsfml-graphics -lsfml-window -lsfml-system
 LDFLAGS =
@@ -15,6 +15,8 @@ EXEC = chevres
 
 SRC  = $(wildcard $(SRCDIR)/*.cpp)
 SRC += $(wildcard $(SRCDIR)/Interface/*.cpp)
+SRC += $(wildcard $(SRCDIR)/Simulation/*.cpp)
+SRC += $(wildcard $(SRCDIR)/outils/*.cpp)
 OBJ  = $(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
 default : all

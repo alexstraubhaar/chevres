@@ -13,16 +13,16 @@ class Gui
 public:
     //Constructeurs/destructeurs
     Gui();
-    ~Gui();
 
     // Méthodes publiques
-    bool tour();
+    bool tour(sf::Drawable& adessiner);
 
 private:
     // Méthodes privées
     void gestionDesEvenements();
-    void dessine();
+    void dessine(sf::Drawable& adessiner);
 
+public: //Juste pour tester...
     // Membres privés
     sf::RenderWindow fenetrePrincipale; /*!< a priori la seule fenêtre du programme */
 
