@@ -4,17 +4,14 @@
 
 enum etat
 {
-
     MARCHE,
     PAUSE,
     ARRET,
     QUITTE
-
 };
 
 int main()
 {
-
     etat etatProgramme = ARRET;
     Gui gui;
 
