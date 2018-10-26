@@ -2,8 +2,8 @@
 
 //#include <SFML/Graphics.hpp>
 
-#include "Interface/gui.h"
-#include "Simulation/adessiner.h"
+#include "interface/gui.h"
+#include "simulation/adessiner.h"
 
 enum etat
 {
