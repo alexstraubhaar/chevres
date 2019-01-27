@@ -14,9 +14,9 @@ BINDIR = bin
 EXEC = chevres
 
 SRC  = $(wildcard $(SRCDIR)/*.cpp)
-SRC += $(wildcard $(SRCDIR)/Interface/*.cpp)
-SRC += $(wildcard $(SRCDIR)/Simulation/*.cpp)
-SRC += $(wildcard $(SRCDIR)/outils/*.cpp)
+SRC += $(wildcard $(SRCDIR)/interface/*.cpp)
+SRC += $(wildcard $(SRCDIR)/simulation/*.cpp)
+SRC += $(wildcard $(SRCDIR)/tools/*.cpp)
 OBJ  = $(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
 default : all

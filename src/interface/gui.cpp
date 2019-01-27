@@ -3,42 +3,37 @@
 #include "gui.h"
 
 //Constantes à changer en parametres...
-int tailleFenetreX = 1000;
-int tailleFenetreY = 1000;
-sf::Color fondDecran = sf::Color(5,27,1); //très joli vert
-
-void hello()
-{
-    std::cout << "test du makefile depuis le fichier inclu...\n";
-}
+int windowSizeX = 1000;
+int windowSizeY = 1000;
+sf::Color backGround = sf::Color(5,27,1); //très joli vert
 
 Gui::Gui()
 {
-    fenetrePrincipale.create(sf::VideoMode(tailleFenetreX, tailleFenetreY), L"Chêêêêêêêvres");
+    mainWinow.create(sf::VideoMode(windowSizeX, windowSizeY), L"Chêêêêêêêêêêvre");
 }
 
-bool Gui::tour(sf::Drawable& adessiner)
+bool Gui::round(sf::Drawable& toDraw)
 {
-    gestionDesEvenements();
-    dessine(adessiner);
-    return fenetrePrincipale.isOpen();
+    eventsManagement();
+    draw(toDraw);
+    return mainWinow.isOpen();
 }
 
-void Gui::gestionDesEvenements()
+void Gui::eventsManagement()
 {
-    sf::Event evenements;
-    while (fenetrePrincipale.pollEvent(evenements))
+    sf::Event events;
+    while (mainWinow.pollEvent(events))
     {
-        if(evenements.type == sf::Event::Closed)
+        if(events.type == sf::Event::Closed)
         {
-            fenetrePrincipale.close();
+            mainWinow.close();
         }
     }
 }
 
-void Gui::dessine(sf::Drawable& adessiner)
+void Gui::draw(sf::Drawable& toDraw)
 {
-    fenetrePrincipale.clear(fondDecran);
-    fenetrePrincipale.draw(adessiner);
-    fenetrePrincipale.display();
+    mainWinow.clear(backGround);
+    mainWinow.draw(toDraw);
+    mainWinow.display();
 }

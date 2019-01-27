@@ -1,92 +1,90 @@
-#include "alea.h"
+#include "randomTools.h"
 
 // pour les int
-
-generateurAlea::generateurAlea(int minimum, int maximum) /*: std::mt19937((std::random_device())())*/
+RandomGenerator::RandomGenerator(int minimum, int maximum) /*: std::mt19937((std::random_device())())*/
 {
     min = minimum;
     max = maximum;
-    champsReel = maximum - minimum;
+    delta = maximum - minimum;
 
     dis.param(std::uniform_int_distribution<>::param_type(min ,max));
 }
 
-void generateurAlea::setMin(int minimum)
+void RandomGenerator::setMin(int minimum)
 {
     min = minimum;
     dis.param(std::uniform_int_distribution<>::param_type(min ,max));
-    champsReel = max - min;
+    delta = max - min;
 }
 
-void generateurAlea::setMax(int maximum)
+void RandomGenerator::setMax(int maximum)
 {
     max = maximum;
     dis.param(std::uniform_int_distribution<>::param_type(min ,max));
-    champsReel = max - min;
+    delta = max - min;
 }
 
-void generateurAlea::setBornes(int minimum, int maximum){
+void RandomGenerator::setBornes(int minimum, int maximum){
     min = minimum;
     max = maximum;
     dis.param(std::uniform_int_distribution<>::param_type(min ,max));
-    champsReel = max - min;
+    delta = max - min;
 }
 
-int generateurAlea::alea()
+int RandomGenerator::rnd()
 {
     return dis(gen);
 }
 
-int generateurAlea::alea(int minimum,int maximum)
+int RandomGenerator::rnd(int minimum,int maximum)
 {
     int champsVoulu = maximum - minimum;
-    int ratio = champsVoulu / champsReel;
+    int ratio = champsVoulu / delta;
     return int(dis(gen)*ratio);
 }
 
-generateurAleaF::generateurAleaF(float minimum, float maximum) //
-{
-    min = minimum;
-    max = maximum;
-    champsReel = maximum - minimum;
-
-    dis.param(std::uniform_real_distribution<>::param_type(min ,max));
-}
-
 // pour les float
-
-void generateurAleaF::setMin(float minimum)
-{
-    min = minimum;
-    dis.param(std::uniform_real_distribution<>::param_type(min ,max));
-    champsReel = max - min;
-
-
-}
-void generateurAleaF::setMax(float maximum)
-{
-    max = maximum;
-    dis.param(std::uniform_real_distribution<>::param_type(min ,max));
-    champsReel = max - min;
-
-}
-
-void generateurAleaF::setBornes(float minimum, float maximum)
+RandomGenerator_float::RandomGenerator_float(float minimum, float maximum) //
 {
     min = minimum;
     max = maximum;
+    delta = maximum - minimum;
+
     dis.param(std::uniform_real_distribution<>::param_type(min ,max));
-    champsReel = max - min;
 }
 
-float generateurAleaF::alea()
+void RandomGenerator_float::setMin(float minimum)
+{
+    min = minimum;
+    dis.param(std::uniform_real_distribution<>::param_type(min ,max));
+    delta = max - min;
+
+
+}
+void RandomGenerator_float::setMax(float maximum)
+{
+    max = maximum;
+    dis.param(std::uniform_real_distribution<>::param_type(min ,max));
+    delta = max - min;
+
+}
+
+void RandomGenerator_float::setBornes(float minimum, float maximum)
+{
+    min = minimum;
+    max = maximum;
+    dis.param(std::uniform_real_distribution<>::param_type(min ,max));
+    delta = max - min;
+}
+
+float RandomGenerator_float::rnd()
 {
     return (dis(gen));
 }
 
-float generateurAleaF::alea(float minimum,float maximum)
+float RandomGenerator_float::rnd(float minimum,float maximum)
 {
     float champsVoulu = minimum - maximum;
-    float ratio = champsVoulu / champsReel;
+    float ratio = champsVoulu / delta;
     return float(dis(gen)*ratio);
 }

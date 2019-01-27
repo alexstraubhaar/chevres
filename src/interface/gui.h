@@ -4,9 +4,6 @@
 
 #include <SFML/Graphics.hpp>
 
-// fonctions
-void hello();
-
 class Gui
 {
 
@@ -15,16 +12,16 @@ public:
     Gui();
 
     // Méthodes publiques
-    bool tour(sf::Drawable& adessiner);
+    bool round(sf::Drawable& toDraw);
 
 private:
     // Méthodes privées
-    void gestionDesEvenements();
-    void dessine(sf::Drawable& adessiner);
+    void eventsManagement();
+    void draw(sf::Drawable& toDraw);
 
 public: //Juste pour tester...
     // Membres privés
-    sf::RenderWindow fenetrePrincipale; /*!< a priori la seule fenêtre du programme */
+    sf::RenderWindow mainWinow; /*!< a priori la seule fenêtre du programme */
 
 };
 

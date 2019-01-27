@@ -1,33 +1,29 @@
 #include <iostream>
 
-//#include <SFML/Graphics.hpp>
-
 #include "interface/gui.h"
-#include "simulation/adessiner.h"
+#include "simulation/toDraw.h"
 
-enum etat
+enum state
 {
-    MARCHE,
+    RUN,
     PAUSE,
-    ARRET,
-    QUITTE
+    STOP,
+    QUIT
 };
 
 int main()
 {
-    etat etatProgramme = ARRET;
+
+    state programState = STOP;
     Gui gui;
-    ADessiner adessiner;
+    ToDraw toDraw;
 
-    std::cout << "Hello world !\n"; /*!< juste pour un code minimum, pour tester le makefile */
-    hello();
+    while(programState != QUIT){
 
-    while(etatProgramme != QUITTE){
-
-        adessiner.petitTour();
-        if(!gui.tour(adessiner))
+        toDraw.update();
+        if(!gui.round(toDraw))
         {
-            etatProgramme = QUITTE;
+            programState = QUIT;
         }
 
     }
